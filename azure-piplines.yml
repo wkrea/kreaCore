@@ -51,6 +51,6 @@ steps:
     feedsToUse: 'select'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: 'kreaCore'
+    publishVstsFeed: 'kreaCore/kreaCore'
     versioningScheme: 'off'
     allowPackageConflicts: true
