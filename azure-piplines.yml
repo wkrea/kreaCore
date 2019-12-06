@@ -39,13 +39,18 @@ steps:
     projectKey: 'wkreaTestSonarCloud'
     projectName: 'wkreaTestSonarCloud'
 
-- task: SonarCloudAnalyze@1
-  displayName: "Run SonarCloud Analysis"
-
-- task: SonarCloudPublish@1
-  displayName: "Publish SonarCloud Analysis"
+- task: PowerShell@2
   inputs:
-    pollingTimeoutSec: '300'
+    targetType: 'inline'
+    script: |
+      Get-ChildItem -Recurse -Filter "*.coverage" | % {  
+      $outfile = "$([System.IO.Path]::GetFileNameWithoutExtension($_.FullName)).coveragexml"  
+      $output = [System.IO.Path]::Combine([System.IO.Path]::GetDirectoryName($_.FullName), $outfile)  
+      "Analyse '$($_.Name)' with output '$outfile'..."  
+      . $env:USERPROFILE\.nuget\packages\microsoft.codecoverage\15.9.0\build\netstandard1.0\CodeCoverage\CodeCoverage.exe analyze /output:$output $_.FullName  
+      }  
+      "Done"
+    workingDirectory: '$(Agent.TempDirectory)'
 
 # The second task is dotnet pack command again pointing to the csproj file
 # The nobuild means the project will not be compiled before running pack, because its already built in above step
