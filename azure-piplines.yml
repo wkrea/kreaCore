@@ -31,6 +31,7 @@ steps:
 
 
 - task: SonarCloudPrepare@1
+  displayName: "Prepare SonarCloud Analysis"
   inputs:
     SonarCloud: 'TestSonarCloud'
     organization: 'krea'
@@ -38,6 +39,13 @@ steps:
     projectKey: 'wkreaTestSonarCloud'
     projectName: 'wkreaTestSonarCloud'
 
+- task: SonarCloudAnalyze@1
+  displayName: "Run SonarCloud Analysis"
+
+- task: SonarCloudPublish@1
+  displayName: "Publish SonarCloud Analysis"
+  inputs:
+    pollingTimeoutSec: '300'
 
 # The second task is dotnet pack command again pointing to the csproj file
 # The nobuild means the project will not be compiled before running pack, because its already built in above step
