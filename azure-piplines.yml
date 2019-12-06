@@ -52,6 +52,10 @@ steps:
       "Done"
     workingDirectory: '$(Agent.TempDirectory)'
 
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+
 # The second task is dotnet pack command again pointing to the csproj file
 # The nobuild means the project will not be compiled before running pack, because its already built in above step
 - task: DotNetCoreCLI@2
