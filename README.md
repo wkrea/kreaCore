@@ -15,7 +15,7 @@ Usando los parametros definidos en `javiertrigos88/kreaCore/Artifacts/Packages` 
 ```xml
 <add key="kreaCore" value="https://pkgs.dev.azure.com/javiertrigos88/kreaCore/_packaging/kreaCore/nuget/v3/index.json" />
 ```
-Puede mirarse en la carpeta Docs\Access2Nuget para mas detalles
+Puede mirarse en la carpeta `Docs\Access2Nuget` para mas detalles
 
 
 
