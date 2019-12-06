@@ -29,6 +29,16 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
     projects: 'kreaCore/kreaCore.csproj'
 
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'TestSonarCloud'
+    organization: 'krea'
+    scannerMode: 'MSBuild'
+    projectKey: 'wkreaTestSonarCloud'
+    projectName: 'wkreaTestSonarCloud'
+
+
 # The second task is dotnet pack command again pointing to the csproj file
 # The nobuild means the project will not be compiled before running pack, because its already built in above step
 - task: DotNetCoreCLI@2
@@ -55,3 +65,4 @@ steps:
     publishVstsFeed: kreaCore/kreaCore
     versioningScheme: 'off'
     allowPackageConflicts: true
+
