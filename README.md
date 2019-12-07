@@ -5,10 +5,14 @@
 
 Mi Librería Genérica Core convertida en Nugget guiado de tutorial https://medium.com/@dan.cokely/creating-nuget-packages-in-azure-devops-with-azure-pipelines-and-yaml-d6fa30f0f15e
 
-
+---
 ## Como constuir Nuget desde PipeLine de DevOpsAzure
 https://stackoverflow.com/questions/58856604/azure-devops-publish-nuget-to-hosted-feed/59204574#59204574
+> Otras referencias
+https://medium.com/@dan.cokely/creating-nuget-packages-in-azure-devops-with-azure-pipelines-and-yaml-d6fa30f0f15e
+https://medium.com/@ginomessmer/get-started-with-private-nuget-feeds-in-azure-devops-8c7b5f022a68
 
+---
 ## Como acceder a los paquetes desde VSTudio
   
 Usando los parametros definidos en `javiertrigos88/kreaCore/Artifacts/Packages` y el botón `Connect to Feed`
@@ -19,8 +23,8 @@ Puede mirarse en la carpeta `Docs\Access2Nuget` para mas detalles
 
 
 
-
-Recursos
+---
+# Recursos
 * https://www.youtube.com/watch?v=ESdvXlrG9zQ&list=PLUOequmGnXxOgmSDWU7Tl6iQTsOtyjtwU&index=3&t=416s
 * https://www.thereformedprogrammer.net/genericservices-a-library-to-provide-crud-front-end-services-from-a-ef-core-database/
 * https://github.com/JonPSmith/EfCore.GenericServices
