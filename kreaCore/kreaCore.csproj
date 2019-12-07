@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <PackageId>krea.Core</PackageId>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Authors>William Trigos</Authors>
     <Description>Test project of common utils</Description>
     <IsPackable>true</IsPackable>
