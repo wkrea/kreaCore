@@ -30,31 +30,31 @@ steps:
     projects: 'kreaCore/kreaCore.csproj'
 
 
-- task: SonarCloudPrepare@1
-  displayName: "Prepare SonarCloud Analysis"
-  inputs:
-    SonarCloud: 'TestSonarCloud'
-    organization: 'krea'
-    scannerMode: 'MSBuild'
-    projectKey: 'wkreaTestSonarCloud'
-    projectName: 'wkreaTestSonarCloud'
+# - task: SonarCloudPrepare@1
+#   displayName: "Prepare SonarCloud Analysis"
+#   inputs:
+#     SonarCloud: 'TestSonarCloud'
+#     organization: 'krea'
+#     scannerMode: 'MSBuild'
+#     projectKey: 'wkreaTestSonarCloud'
+#     projectName: 'wkreaTestSonarCloud'
 
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      Get-ChildItem -Recurse -Filter "*.coverage" | % {  
-      $outfile = "$([System.IO.Path]::GetFileNameWithoutExtension($_.FullName)).coveragexml"  
-      $output = [System.IO.Path]::Combine([System.IO.Path]::GetDirectoryName($_.FullName), $outfile)  
-      "Analyse '$($_.Name)' with output '$outfile'..."  
-      . $env:USERPROFILE\.nuget\packages\microsoft.codecoverage\15.9.0\build\netstandard1.0\CodeCoverage\CodeCoverage.exe analyze /output:$output $_.FullName  
-      }  
-      "Done"
-    workingDirectory: '$(Agent.TempDirectory)'
+# - task: PowerShell@2
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       Get-ChildItem -Recurse -Filter "*.coverage" | % {  
+#       $outfile = "$([System.IO.Path]::GetFileNameWithoutExtension($_.FullName)).coveragexml"  
+#       $output = [System.IO.Path]::Combine([System.IO.Path]::GetDirectoryName($_.FullName), $outfile)  
+#       "Analyse '$($_.Name)' with output '$outfile'..."  
+#       . $env:USERPROFILE\.nuget\packages\microsoft.codecoverage\15.9.0\build\netstandard1.0\CodeCoverage\CodeCoverage.exe analyze /output:$output $_.FullName  
+#       }  
+#       "Done"
+#     workingDirectory: '$(Agent.TempDirectory)'
 
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
+# - task: SonarCloudPublish@1
+#   inputs:
+#     pollingTimeoutSec: '300'
 
 # The second task is dotnet pack command again pointing to the csproj file
 # The nobuild means the project will not be compiled before running pack, because its already built in above step
